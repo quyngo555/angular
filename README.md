@@ -7,32 +7,7 @@
 + Tích hợp hai chiều dữ liệu(two way binding), giúp đồng bộ hóa dữ liệu giữa view & model
 1.3. Kiến trúc angular
 - Cấu trúc thư mục angular:
-my-angular-app/
-­	├── e2e/                      # Thư mục chứa mã kiểm thử end-to-end (testing hành vi người dùng)
-­	├── node_modules/             # Thư mục chứa các package đã cài đặt qua npm (không commit lên git)
-­	├── src/                      # Thư mục chứa toàn bộ mã nguồn ứng dụng
-­	│   ├── app/                  # Thư mục chứa mã nguồn chính của ứng dụng Angular
-­	│   │   ├── app.module.ts     # Module gốc (Root Module) của ứng dụng
-­	│   │   ├── app.component.ts  # Component gốc (Root Component)
-­	│   │   ├── app.component.html# Template HTML của component gốc
-­	│   │   └── app.component.css # Style của component gốc
-­	│   ├── assets/               # Chứa tài nguyên tĩnh như hình ảnh, icon, font,...
-­	│   ├── environments/         # Cấu hình môi trường (dev, prod)
-­	│   │   ├── environment.ts    # Cấu hình môi trường phát triển
-­	│   │   └── environment.prod.ts # Cấu hình môi trường production
-­	│   ├── favicon.ico           # Icon hiển thị trên trình duyệt
-­	│   ├── index.html            # File HTML gốc, nơi Angular bootstrap ứng dụng
-­	│   ├── main.ts               # Entry point của ứng dụng, bootstrap AppModule
-­	│   ├── polyfills.ts          # Cấu hình polyfill cho trình duyệt cũ
-­	│   ├── styles.css            # Style toàn cục của ứng dụng
-­	│   └── test.ts               # Cấu hình cho unit test
-­	├── angular.json              # Cấu hình Angular CLI (build, serve, test,...)
-­	├── package.json              # Quản lý dependencies và scripts của dự án
-­	├── tsconfig.json             # Cấu hình TypeScript chung cho dự án
-­	├── tsconfig.app.json         # Cấu hình TypeScript cho ứng dụng
-­	├── tsconfig.spec.json        # Cấu hình TypeScript cho testing
-­	├── tslint.json               # Cấu hình linting cho TypeScript
-
+![alt text](image-2.png)
 - tsconfig.json
 + Xác định các tùy chọn biên dịch (compilerOptions)
 + Chỉ định các tệp hoặc thư mục được biên dịch
@@ -88,6 +63,8 @@ Cách tạo mới 1 component: ng g c name-component
 + Các file CSS để định dạng giao diện.
 
 - Component lifecycle:
+
+
 ![alt text](image.png)
 ![alt text](image-1.png)
 
@@ -104,7 +81,7 @@ Cách tạo mới 1 component: ng g c name-component
 - ­	Làm thế nào để truyền dữ liệu từ component cha đến component con và ngược lại?
 + @Input 
 
-@Component({
+```@Component({
   selector: 'app-child',
   template: `
     <p>Message from parent: {{ message }}</p>
@@ -112,9 +89,9 @@ Cách tạo mới 1 component: ng g c name-component
 })
 export class ChildComponent {
   @Input() message!: string;  // Nhận dữ liệu từ parent
-}
+}```
 
-@Component({
+```@Component({
   selector: 'app-parent',
   template: `
     <app-child [message]="parentMessage"></app-child>
@@ -122,10 +99,11 @@ export class ChildComponent {
 })
 export class ParentComponent {
   parentMessage = 'Hello from Parent!';
-}
+}```
 result: Message from parent: Hello from Parent!
 + @viewchild
-@Component({
+
+```@Component({
   selector: 'app-child',
   template: `
     <p>Child component content</p>
@@ -135,7 +113,7 @@ export class ChildComponent {
   sayHello() {
     return 'Hello from Child!';
   }
-}
+}```
 
 
 
